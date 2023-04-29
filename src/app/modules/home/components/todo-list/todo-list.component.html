@@ -12,7 +12,11 @@
     </ul>
 </section>
 
-<app-todo-input-add-itens></app-todo-input-add-itens>
+<app-todo-input-add-itens (emitItemTaskList)="setEmitTaskList($event)">
+    <!-- o emitItemTaskList vem do componente, sendo um Output dele.
+E ao ser disparado, chama o setEmitTaskList que está dentro deste componente. -->
+</app-todo-input-add-itens>
+
 <app-todo-button-delete-all
     *ngIf="taskList.length"
     (click)="deleteAllTaskList()"
