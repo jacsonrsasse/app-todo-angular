@@ -15,6 +15,7 @@ export class TodoListComponent implements DoCheck {
 
     public deleteItemTaskList(indice: number) {
         this.taskList.splice(indice, 1);
+        this.saveLocalStorage();
     }
 
     public deleteAllTaskList() {
@@ -22,6 +23,7 @@ export class TodoListComponent implements DoCheck {
         if (confirm) {
             this.taskList = [];
         }
+        this.saveLocalStorage();
     }
 
     public setEmitTaskList(taskList: string) {
@@ -42,7 +44,10 @@ export class TodoListComponent implements DoCheck {
         if (!this.taskList.length) {
             return;
         }
+        this.saveLocalStorage();
+    }
 
+    private saveLocalStorage() {
         this.taskList.sort((first: TaskList, last: TaskList) => {
             return Number(first.checked) - Number(last.checked);
         });
